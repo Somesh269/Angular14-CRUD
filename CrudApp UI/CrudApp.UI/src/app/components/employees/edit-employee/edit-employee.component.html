@@ -5,44 +5,53 @@
             <form [formGroup]="editEmpForm" class="add">
                 <div class="mb-3">
                     <label for="id" class="form-label">Id</label>
-                    <input type="text" formControlName="id" class="form-control" id="id" readonly [ngModel]="employeeDetails.id">
+                    <input type="text" formControlName="id" class="form-control" id="id" readonly
+                        [ngModel]="employeeDetails.id">
                 </div>
 
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" formControlName="name" class="form-control" id="name"
                         placeholder="Full Name (required)"
-                        [ngClass]="{'is-invalid': (editEmpForm.get('name')?.touched || editEmpForm.get('name')?.dirty) && !editEmpForm.get('name')?.valid}" [ngModel]="employeeDetails.name">
-                    <div *ngIf="editEmpForm.get('name')?.errors?.['required']" class="form-text text-danger">Please
-                        enter
-                        your Name!</div>
+                        [ngClass]="{'is-invalid': (editEmpForm.get('name')?.touched || editEmpForm.get('name')?.dirty) && !editEmpForm.get('name')?.valid}"
+                        [ngModel]="employeeDetails.name">
+                    <span class="invalid-feedback">
+                        <span *ngIf="editEmpForm.get('name')?.errors?.['required']">Please enter your Name!</span>
+                    </span>
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" formControlName="email" class="form-control" id="email"
                         placeholder="Email (required)"
-                        [ngClass]="{'is-invalid': (editEmpForm.get('email')?.touched || editEmpForm.get('email')?.dirty) && !editEmpForm.get('email')?.valid}" [ngModel]="employeeDetails.email">
-                    <div *ngIf="editEmpForm.get('email')?.errors?.['required']" class="form-text text-danger">Please
-                        enter your email!</div>
-                    <div *ngIf="editEmpForm.get('email')?.errors?.['email']" class="form-text text-danger">Please enter
-                        valid email!</div>
+                        [ngClass]="{'is-invalid': (editEmpForm.get('email')?.touched || editEmpForm.get('email')?.dirty) && !editEmpForm.get('email')?.valid}"
+                        [ngModel]="employeeDetails.email">
+                    <span class="invalid-feedback">
+                        <span *ngIf="editEmpForm.get('email')?.errors?.['required']">Please
+                            enter your email!</span>
+                        <span *ngIf="editEmpForm.get('email')?.errors?.['email']">Please enter
+                            valid email!</span>
+                    </span>
                 </div>
 
                 <div class="mb-3">
                     <label for="department" class="form-label">Department</label>
                     <input type="text" formControlName="department" class="form-control" id="department"
                         placeholder="Email (required)"
-                        [ngClass]="{'is-invalid': (editEmpForm.get('department')?.touched || editEmpForm.get('department')?.dirty) && !editEmpForm.get('department')?.valid}" [ngModel]="employeeDetails.department">
-                    <div *ngIf="editEmpForm.get('department')?.errors?.['required']" class="form-text text-danger">
-                        Please
-                        enter your department!</div>
+                        [ngClass]="{'is-invalid': (editEmpForm.get('department')?.touched || editEmpForm.get('department')?.dirty) && !editEmpForm.get('department')?.valid}"
+                        [ngModel]="employeeDetails.department">
+                    <span class="invalid-feedback">
+                        <span *ngIf="editEmpForm.get('department')?.errors?.['required']">Please enter your
+                            department!</span>
+                    </span>
                 </div>
 
-                <button type="submit" class="btn btn-primary" (click)="save()" [disabled]="!editEmpForm.valid">Save</button>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button (click)="deleteEmployee(employeeDetails.id)" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-primary" (click)="save()"
+                    [disabled]="!editEmpForm.valid">Save</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button (click)="deleteEmployee(employeeDetails.id)"
+                    class="btn btn-danger">Delete</button>
             </form>
-            
+
         </div>
     </div>
 
