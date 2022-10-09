@@ -23,14 +23,13 @@ export class EditEmployeeComponent implements OnInit {
   constructor(private fb: FormBuilder, private ar: ActivatedRoute, private router: Router, private employeeService: EmployeesService) { }
 
   ngOnInit(): void {
-    const id = String(this.ar.snapshot.paramMap.get('id'));
-    this.editEmployee = this.employeeService.getEmployee(id);
     this.editEmpForm = this.fb.group({
       id: [''],
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       department: ['', [Validators.required]]
     });
+    const id = String(this.ar.snapshot.paramMap.get('id'));
     this.employeeService.getEmployee(id).subscribe(emp => {
       this.employeeDetails = emp;
     });
