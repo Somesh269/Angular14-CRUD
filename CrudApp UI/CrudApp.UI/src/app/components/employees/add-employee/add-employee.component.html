@@ -8,8 +8,9 @@
                     <input type="text" formControlName="name" class="form-control" id="name"
                         placeholder="Full Name (required)"
                         [ngClass]="{'is-invalid': (addEmpForm.get('name')?.touched || addEmpForm.get('name')?.dirty) && !addEmpForm.get('name')?.valid}">
-                    <div *ngIf="addEmpForm.get('name')?.errors?.['required']" class="form-text text-danger">Please enter
-                        your Name!</div>
+                    <span class="invalid-feedback">
+                        <span *ngIf="addEmpForm.get('name')?.errors?.['required']">Please enter your Name!</span>
+                    </span>
                 </div>
 
                 <div class="mb-3">
@@ -17,19 +18,23 @@
                     <input type="email" formControlName="email" class="form-control" id="email"
                         placeholder="Email (required)"
                         [ngClass]="{'is-invalid': (addEmpForm.get('email')?.touched || addEmpForm.get('email')?.dirty) && !addEmpForm.get('email')?.valid}">
-                    <div *ngIf="addEmpForm.get('email')?.errors?.['required']" class="form-text text-danger">Please
-                        enter your email!</div>
-                    <div *ngIf="addEmpForm.get('email')?.errors?.['email']" class="form-text text-danger">Please enter
-                        valid email!</div>
+                    <span class="invalid-feedback">
+                        <span *ngIf="addEmpForm.get('email')?.errors?.['required']">Please
+                            enter your email!</span>
+                        <span *ngIf="addEmpForm.get('email')?.errors?.['email']">Please enter
+                            valid email!</span>
+                    </span>
                 </div>
 
                 <div class="mb-3">
                     <label for="department" class="form-label">Department</label>
                     <input type="text" formControlName="department" class="form-control" id="department"
-                        placeholder="Email (required)"
+                        placeholder="Department (required)"
                         [ngClass]="{'is-invalid': (addEmpForm.get('department')?.touched || addEmpForm.get('department')?.dirty) && !addEmpForm.get('department')?.valid}">
-                    <div *ngIf="addEmpForm.get('department')?.errors?.['required']" class="form-text text-danger">Please
-                        enter your department!</div>
+                    <span class="invalid-feedback">
+                        <span *ngIf="addEmpForm.get('department')?.errors?.['required']">Please enter your
+                            department!</span>
+                    </span>
                 </div>
 
                 <button type="submit" class="btn btn-primary" [disabled]="!addEmpForm.valid">Save</button>
